@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESFA.DC.PublicApi.FCS.Dtos\ESFA.DC.PublicApi.FCS.Dtos.csproj" />
+  </ItemGroup>
+
+</Project>
