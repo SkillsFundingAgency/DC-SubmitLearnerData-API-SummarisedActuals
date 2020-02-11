@@ -18,7 +18,7 @@ stages:
     pool:
       name: DCT
       demands:
-      - IsBuildServer
+      - IsNewBuildServer
 
     steps:
     - task: DotNetCoreInstaller@2
