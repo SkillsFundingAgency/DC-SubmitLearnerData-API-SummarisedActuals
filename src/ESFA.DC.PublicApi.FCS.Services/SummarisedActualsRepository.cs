@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ESFA.DC.Api.Common.Utilities.Interfaces;
+using ESFA.DC.Api.Common.Utilities.Pagination;
 using ESFA.DC.PublicApi.FCS.Dtos;
-using ESFA.DC.PublicApi.FCS.Interfaces;
-using ESFA.DC.PublicApi.FCS.Services.Pagination;
 using ESFA.DC.Summarisation.Model;
 using ESFA.DC.Summarisation.Model.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -20,25 +20,21 @@ namespace ESFA.DC.PublicApi.FCS.Services
             _summarisationFactory = summarisationFactory;
         }
 
-
-        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(string collectionType,
-            string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
+        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(string collectionType, string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
         {
             IPaginatedResult<SummarisedActualDto> result;
 
             using (var context = _summarisationFactory())
             {
                 var data = context.SummarisedActuals.Include(x => x.CollectionReturn)
-                    .Where(x => x.CollectionReturn.CollectionReturnCode.Equals(collectionReturnCode,
-                                    StringComparison.OrdinalIgnoreCase)
-                                && x.CollectionReturn.CollectionType.Equals(collectionType,
-                                    StringComparison.OrdinalIgnoreCase))
+                    .Where(x => x.CollectionReturn.CollectionReturnCode.Equals(collectionReturnCode, StringComparison.OrdinalIgnoreCase)
+                                && x.CollectionReturn.CollectionType.Equals(collectionType, StringComparison.OrdinalIgnoreCase))
                     .Select(x => new SummarisedActualDto
                     {
                         CollectionReturnCode = collectionReturnCode,
                         CollectionType = collectionType,
                         ActualValue = x.ActualValue,
-                        ActualVolume = x.ActualVolume == 0 ? null : (int?) x.ActualVolume,
+                        ActualVolume = x.ActualVolume == 0 ? null : (int?)x.ActualVolume,
                         ContractAllocationNumber = x.ContractAllocationNumber,
                         DeliverableCode = x.DeliverableCode,
                         FundingStreamPeriodCode = x.FundingStreamPeriodCode,

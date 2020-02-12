@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using ESFA.DC.Api.Common.Utilities.Extensions;
+using ESFA.DC.Api.Common.Utilities.Interfaces;
 using ESFA.DC.Logging.Interfaces;
 using ESFA.DC.PublicApi.FCS.Dtos;
-using ESFA.DC.PublicApi.FCS.Extensions;
-using ESFA.DC.PublicApi.FCS.Interfaces;
+using ESFA.DC.PublicApi.FCS.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+//using Microsoft.AspNetCore.Mvc;
 
 namespace ESFA.DC.PublicApi.FCS.Controllers
 {
@@ -57,7 +61,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
                 return BadRequest();
             }
 
-            var summarisedActuals = await _summarisedActualsRepository.GetSummarisedActuals(collectionType, collectionReturnCode, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
+            IPaginatedResult<SummarisedActualDto> summarisedActuals = await _summarisedActualsRepository.GetSummarisedActuals(collectionType, collectionReturnCode, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
 
             _logger.LogVerbose($"Exiting Get Summarised Actuals, data count : {summarisedActuals.TotalItems}");
 

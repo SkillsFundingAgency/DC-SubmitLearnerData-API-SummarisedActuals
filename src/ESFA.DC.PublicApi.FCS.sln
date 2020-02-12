@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.PublicApi.FCS.Dtos"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.PublicApi.FCS.Services", "ESFA.DC.PublicApi.FCS.Services\ESFA.DC.PublicApi.FCS.Services.csproj", "{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.PublicApi.FCS.Interfaces", "ESFA.DC.PublicApi.FCS.Interfaces\ESFA.DC.PublicApi.FCS.Interfaces.csproj", "{C375CB85-C695-461D-9373-6BA2C4395C17}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C375CB85-C695-461D-9373-6BA2C4395C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C375CB85-C695-461D-9373-6BA2C4395C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C375CB85-C695-461D-9373-6BA2C4395C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C375CB85-C695-461D-9373-6BA2C4395C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using ESFA.DC.PublicApi.FCS.Extensions;
 using ESFA.DC.PublicApi.FCS.Settings;
+using ESFA.DC.WebApi.External.Settings;
 using Microsoft.Extensions.Configuration;
 
 namespace ESFA.DC.PublicApi.FCS.Ioc
