@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ESFA.DC.Api.Common" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ESFA.DC.PublicApi.FCS.Dtos\ESFA.DC.PublicApi.FCS.Dtos.csproj" />
   </ItemGroup>
 

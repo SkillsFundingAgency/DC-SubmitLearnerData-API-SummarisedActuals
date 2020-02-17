@@ -1,6 +1,7 @@
 ﻿using ESFA.DC.PublicApi.FCS.Dtos;
 using System;
 using System.Threading.Tasks;
+using ESFA.DC.Api.Common.Utilities.Interfaces;
 
 namespace ESFA.DC.PublicApi.FCS.Interfaces
 {

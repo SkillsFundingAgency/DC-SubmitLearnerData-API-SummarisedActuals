@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ESFA.DC.PublicApi.FCS.Interfaces", "ESFA.DC.PublicApi.FCS.Interfaces\ESFA.DC.PublicApi.FCS.Interfaces.csproj", "{2EA4207D-A7D5-4B72-B612-A4954D44539F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D72FA8F-EF03-4124-ACF4-E7DF19BC2A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA4207D-A7D5-4B72-B612-A4954D44539F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA4207D-A7D5-4B72-B612-A4954D44539F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA4207D-A7D5-4B72-B612-A4954D44539F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA4207D-A7D5-4B72-B612-A4954D44539F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
