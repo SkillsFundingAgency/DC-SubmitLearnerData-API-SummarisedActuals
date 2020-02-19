@@ -10,8 +10,6 @@ using ESFA.DC.PublicApi.FCS.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-//using Microsoft.AspNetCore.Mvc;
-
 namespace ESFA.DC.PublicApi.FCS.Controllers
 {
     [Microsoft.AspNetCore.Authorization.Authorize(Roles = "FCS")]
