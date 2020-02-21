@@ -17,13 +17,11 @@ namespace ESFA.DC.PublicApi.FCS.Ioc
     {
         protected override void Load(ContainerBuilder builder)
         {
-            //builder.RegisterType<DateTimeProvider.DateTimeProvider>().As<IDateTimeProvider>();
             builder.RegisterType<SummarisedActualsRepository>().As<ISummarisedActualsRepository>();
             builder.RegisterType<IdentityService>().As<IIdentityService>();
 
             // Db contexts
             builder.RegisterType<SummarisationContext>().As<ISummarisationContext>().ExternallyOwned();
-
             builder.RegisterType<ApiIdentityContext>().As<IApiIdentityContext>().ExternallyOwned();
 
             builder.Register(context =>
