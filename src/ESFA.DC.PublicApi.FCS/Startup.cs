@@ -8,6 +8,7 @@ using ESFA.DC.Api.Common.Utilities.Filters;
 using ESFA.DC.PublicApi.FCS.Extensions;
 using ESFA.DC.PublicApi.FCS.Filters;
 using ESFA.DC.PublicApi.FCS.Ioc;
+using ESFA.DC.PublicApi.FCS.Settings;
 using ESFA.DC.WebApi.External.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -125,6 +126,7 @@ namespace ESFA.DC.PublicApi.FCS
 
             services.AddSwaggerDocument(options =>
             {
+                options.Title = "Public FCS api";
                 options.OperationProcessors.Add(new SwaggerOperationFilter());
             });
 
@@ -150,7 +152,8 @@ namespace ESFA.DC.PublicApi.FCS
                 app.UseHsts();
             }
 
-            if (!_environment.IsProduction())
+            var swaggerSettings = Configuration.GetConfigSection<SwaggerSettings>();
+            if (swaggerSettings.Enabled)
             {
                 app.UseOpenApi();
                 app.UseSwaggerUi3();
