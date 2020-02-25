@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ESFA.DC.Api.Common.Identity.EF.Entities;
 using ESFA.DC.Api.Common.Identity.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,6 +16,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class TokenController : ControllerBase
     {
         private readonly IIdentityService _identityService;
