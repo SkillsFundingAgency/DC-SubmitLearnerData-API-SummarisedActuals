@@ -15,6 +15,9 @@ namespace ESFA.DC.PublicApi.FCS.Ioc
 
             builder.Register(c => configuration.GetConfigSection<AuthSettings>())
                 .As<AuthSettings>().SingleInstance();
+
+            builder.Register(c => configuration.GetConfigSection<SwaggerSettings>())
+                .As<SwaggerSettings>().SingleInstance();
         }
     }
 }

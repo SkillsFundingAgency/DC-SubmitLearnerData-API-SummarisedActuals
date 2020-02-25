@@ -15,7 +15,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok();
+            return Ok("Ok");
         }
     }
 }

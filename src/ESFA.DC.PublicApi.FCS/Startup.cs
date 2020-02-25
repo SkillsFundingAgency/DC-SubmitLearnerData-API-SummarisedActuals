@@ -8,6 +8,7 @@ using ESFA.DC.Api.Common.Utilities.Filters;
 using ESFA.DC.PublicApi.FCS.Extensions;
 using ESFA.DC.PublicApi.FCS.Filters;
 using ESFA.DC.PublicApi.FCS.Ioc;
+using ESFA.DC.PublicApi.FCS.Settings;
 using ESFA.DC.WebApi.External.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -151,11 +152,12 @@ namespace ESFA.DC.PublicApi.FCS
                 app.UseHsts();
             }
 
-            if (!_environment.IsProduction())
-            {
-                app.UseOpenApi();
-                app.UseSwaggerUi3();
-            }
+            //var swaggerSettings = Configuration.GetConfigSection<SwaggerSettings>();
+            //if (swaggerSettings.Enabled)
+            //{
+            //    app.UseOpenApi();
+            //    app.UseSwaggerUi3();
+            //}
 
             app.UseHttpsRedirection();
             app.UseRouting();
