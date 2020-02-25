@@ -152,12 +152,12 @@ namespace ESFA.DC.PublicApi.FCS
                 app.UseHsts();
             }
 
-            //var swaggerSettings = Configuration.GetConfigSection<SwaggerSettings>();
-            //if (swaggerSettings.Enabled)
-            //{
-            //    app.UseOpenApi();
-            //    app.UseSwaggerUi3();
-            //}
+            var swaggerSettings = Configuration.GetConfigSection<SwaggerSettings>();
+            if (swaggerSettings.Enabled)
+            {
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
+            }
 
             app.UseHttpsRedirection();
             app.UseRouting();
