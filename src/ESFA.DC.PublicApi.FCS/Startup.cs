@@ -125,6 +125,7 @@ namespace ESFA.DC.PublicApi.FCS
 
             services.AddSwaggerDocument(options =>
             {
+                options.Title = "Public FCS api";
                 options.OperationProcessors.Add(new SwaggerOperationFilter());
             });
 
