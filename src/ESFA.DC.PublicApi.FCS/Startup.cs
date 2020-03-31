@@ -152,6 +152,7 @@ namespace ESFA.DC.PublicApi.FCS
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //once approved by pen testers - these will be moved to api common so other apps can utilise the same mechanism
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
@@ -161,6 +162,8 @@ namespace ESFA.DC.PublicApi.FCS
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");
                 context.Response.Headers.Add("Feature-Policy", "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'");
                 context.Response.Headers.Add("X-Permitted-Cross-Domain-Policies", "none");
+
+                context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=");
 
                 await next();
             });
