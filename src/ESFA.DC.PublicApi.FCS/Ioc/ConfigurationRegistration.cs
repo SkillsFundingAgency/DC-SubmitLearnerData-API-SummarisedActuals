@@ -18,6 +18,9 @@ namespace ESFA.DC.PublicApi.FCS.Ioc
 
             builder.Register(c => configuration.GetConfigSection<SwaggerSettings>())
                 .As<SwaggerSettings>().SingleInstance();
+
+            builder.Register(c => configuration.GetConfigSection<ExpectCTSettings>())
+                .As<ExpectCTSettings>().SingleInstance();
         }
     }
 }
