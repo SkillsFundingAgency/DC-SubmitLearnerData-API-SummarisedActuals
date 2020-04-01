@@ -153,6 +153,8 @@ namespace ESFA.DC.PublicApi.FCS
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             //once approved by pen testers - these will be moved to api common so other apps can utilise the same mechanism
+
+            var expectCTSettings = Configuration.GetConfigSection<ExpectCTSettings>();
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
@@ -163,7 +165,7 @@ namespace ESFA.DC.PublicApi.FCS
                 context.Response.Headers.Add("Feature-Policy", "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'");
                 context.Response.Headers.Add("X-Permitted-Cross-Domain-Policies", "none");
 
-                context.Response.Headers.Add("Expect-CT", "max-age=0, report-uri=");
+                context.Response.Headers.Add("Expect-CT", expectCTSettings.HeaderValue());
 
                 await next();
             });
