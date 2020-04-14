@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ESFA.DC.Api.Common.Utilities.Extensions;
-using ESFA.DC.Api.Common.Utilities.Interfaces;
+using ESFA.DC.Api.Common.Extensions;
+using ESFA.DC.Api.Common.Paging.Interfaces;
 using ESFA.DC.Logging.Interfaces;
 using ESFA.DC.PublicApi.FCS.Dtos;
 using ESFA.DC.PublicApi.FCS.Services;

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Autofac;
 using ESFA.DC.Api.Common.Settings;
 using ESFA.DC.PublicApi.FCS.Services;
-using ESFA.DC.PublicApi.FCS.Settings;
 using ESFA.DC.Summarisation.Model;
 using ESFA.DC.Summarisation.Model.Interface;
 using Microsoft.EntityFrameworkCore;

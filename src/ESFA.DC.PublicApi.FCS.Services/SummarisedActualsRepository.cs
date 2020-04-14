@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ESFA.DC.Api.Common.Utilities.Interfaces;
-using ESFA.DC.Api.Common.Utilities.Pagination;
+using ESFA.DC.Api.Common.Paging.Interfaces;
+using ESFA.DC.Api.Common.Paging.Pagination;
 using ESFA.DC.PublicApi.FCS.Dtos;
 using ESFA.DC.Summarisation.Model;
 using ESFA.DC.Summarisation.Model.Interface;

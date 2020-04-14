@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ESFA.DC.Api.Common.Utilities.Interfaces;
+using ESFA.DC.Api.Common.Paging.Interfaces;
 using ESFA.DC.PublicApi.FCS.Dtos;
 
 namespace ESFA.DC.PublicApi.FCS.Services
