@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ESFA.DC.Api.Common.Extensions;
 using ESFA.DC.Api.Common.Paging.Interfaces;
 using ESFA.DC.Logging.Interfaces;
+using ESFA.DC.PublicApi.FCS.Constants;
 using ESFA.DC.PublicApi.FCS.Dtos;
 using ESFA.DC.PublicApi.FCS.Services;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ESFA.DC.PublicApi.FCS.Controllers
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(Roles = "FCS")]
+    [Microsoft.AspNetCore.Authorization.Authorize(Policy = PolicyNameConstants.FCS)]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/summarised-actuals")]
     [ApiController]
