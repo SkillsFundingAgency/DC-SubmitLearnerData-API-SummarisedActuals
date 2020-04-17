@@ -16,7 +16,7 @@
     <PackageReference Include="Autofac" Version="5.1.2" />
     <PackageReference Include="Autofac.Configuration" Version="5.1.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="ESFA.DC.Api.Common" Version="1.0.42" />
+    <PackageReference Include="ESFA.DC.Api.Common" Version="0.1.2" />
     <PackageReference Include="ESFA.DC.Logging" Version="0.1.10-beta0001" />
     <PackageReference Include="ESFA.DC.Summarisation.Model" Version="0.0.686" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
