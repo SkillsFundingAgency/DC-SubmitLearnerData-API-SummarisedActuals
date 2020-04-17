@@ -1,4 +1,4 @@
-﻿namespace ESFA.DC.PublicApi.FCS
+﻿namespace ESFA.DC.PublicApi.FCS.Constants
 {
     public static class DefaultConstants
     {
