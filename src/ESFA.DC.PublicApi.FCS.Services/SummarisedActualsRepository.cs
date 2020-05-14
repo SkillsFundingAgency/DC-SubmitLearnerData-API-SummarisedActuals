@@ -26,9 +26,9 @@ namespace ESFA.DC.PublicApi.FCS.Services
 
             using (var context = _summarisationFactory())
             {
-                var data = context.SummarisedActuals.Include(x => x.CollectionReturn)
-                    .Where(x => x.CollectionReturn.CollectionReturnCode.Equals(collectionReturnCode, StringComparison.OrdinalIgnoreCase)
-                                && x.CollectionReturn.CollectionType.Equals(collectionType, StringComparison.OrdinalIgnoreCase))
+                var data = context.SummarisedActuals
+                    .Where(x => x.CollectionReturn.CollectionReturnCode == collectionReturnCode &&
+                                x.CollectionReturn.CollectionType == collectionType)
                     .Select(x => new SummarisedActualDto
                     {
                         CollectionReturnCode = collectionReturnCode,
