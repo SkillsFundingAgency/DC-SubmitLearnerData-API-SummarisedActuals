@@ -26,9 +26,11 @@ namespace ESFA.DC.PublicApi.FCS.Services
 
             using (var context = _summarisationFactory())
             {
+                var collectionReturnId = (await context.CollectionReturns.FirstOrDefaultAsync(x => x.CollectionType == collectionType &&
+                                                                                                   x.CollectionReturnCode == collectionReturnCode))?.Id;
+
                 var data = context.SummarisedActuals
-                    .Where(x => x.CollectionReturn.CollectionReturnCode == collectionReturnCode &&
-                                x.CollectionReturn.CollectionType == collectionType)
+                    .Where(x => x.CollectionReturnId == collectionReturnId)
                     .Select(x => new SummarisedActualDto
                     {
                         CollectionReturnCode = collectionReturnCode,
@@ -42,11 +44,11 @@ namespace ESFA.DC.PublicApi.FCS.Services
                         Period = x.Period,
                         PeriodTypeCode = x.PeriodTypeCode,
                         UopCode = x.UoPCode,
-                        Id = x.ID
+                        Id = x.ID,
                     })
                     .OrderBy(x => x.Id);
 
-                result = new PaginatedResult<SummarisedActualDto>(data, pageSize, pageNumber);
+                result = await PaginatedResultFactory<SummarisedActualDto>.CreatePaginatedResult(data, pageSize, pageNumber);
             }
 
             return result;
@@ -76,7 +78,7 @@ namespace ESFA.DC.PublicApi.FCS.Services
                         TotalItems = grp.Count()
                     });
 
-                result = new PaginatedResult<CollectionReturnDto>(data, pageSize, pageNumber);
+                result = await PaginatedResultFactory<CollectionReturnDto>.CreatePaginatedResult(data, pageSize, pageNumber);
             }
 
             return result;
