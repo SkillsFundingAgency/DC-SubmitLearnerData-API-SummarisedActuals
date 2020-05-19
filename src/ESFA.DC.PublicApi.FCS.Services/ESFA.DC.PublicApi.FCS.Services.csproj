@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ESFA.DC.Api.Common.Paging" Version="0.1.2" />
+    <PackageReference Include="ESFA.DC.Api.Common.Paging" Version="0.1.6" />
     <PackageReference Include="ESFA.DC.Summarisation.Model" Version="0.0.686" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>

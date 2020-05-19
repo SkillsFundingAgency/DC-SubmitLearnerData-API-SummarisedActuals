@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ESFA.DC.Api.Common.Paging.Interfaces;
 using ESFA.DC.Api.Common.Paging.Pagination;
@@ -20,7 +21,7 @@ namespace ESFA.DC.PublicApi.FCS.Services
             _summarisationFactory = summarisationFactory;
         }
 
-        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(string collectionType, string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
+        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(CancellationToken cancellationToken, string collectionType, string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
         {
             IPaginatedResult<SummarisedActualDto> result;
 
@@ -42,18 +43,17 @@ namespace ESFA.DC.PublicApi.FCS.Services
                         Period = x.Period,
                         PeriodTypeCode = x.PeriodTypeCode,
                         UopCode = x.UoPCode,
-                        Id = x.ID
+                        Id = x.ID,
                     })
                     .OrderBy(x => x.Id);
 
-                result = new PaginatedResult<SummarisedActualDto>(data, pageSize, pageNumber);
+                result = await PaginatedResultFactory<SummarisedActualDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, cancellationToken);
             }
 
             return result;
         }
 
-        public async Task<IPaginatedResult<CollectionReturnDto>> GetClosedCollectionEvents(
-            DateTime? closedCollectionsSince = null, int pageSize = 0, int pageNumber = 0)
+        public async Task<IPaginatedResult<CollectionReturnDto>> GetClosedCollectionEvents(CancellationToken cancellationToken, DateTime? closedCollectionsSince = null, int pageSize = 0, int pageNumber = 0)
         {
             IPaginatedResult<CollectionReturnDto> result;
 
@@ -76,7 +76,7 @@ namespace ESFA.DC.PublicApi.FCS.Services
                         TotalItems = grp.Count()
                     });
 
-                result = new PaginatedResult<CollectionReturnDto>(data, pageSize, pageNumber);
+                result = await PaginatedResultFactory<CollectionReturnDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, cancellationToken);
             }
 
             return result;
