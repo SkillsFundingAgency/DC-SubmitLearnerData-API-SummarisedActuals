@@ -21,7 +21,7 @@ namespace ESFA.DC.PublicApi.FCS.Services
             _summarisationFactory = summarisationFactory;
         }
 
-        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(string collectionType, string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
+        public async Task<IPaginatedResult<SummarisedActualDto>> GetSummarisedActuals(CancellationToken cancellationToken, string collectionType, string collectionReturnCode, int pageSize = 0, int pageNumber = 0)
         {
             IPaginatedResult<SummarisedActualDto> result;
 
@@ -47,13 +47,13 @@ namespace ESFA.DC.PublicApi.FCS.Services
                     })
                     .OrderBy(x => x.Id);
 
-                result = await PaginatedResultFactory<SummarisedActualDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, CancellationToken.None);
+                result = await PaginatedResultFactory<SummarisedActualDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, cancellationToken);
             }
 
             return result;
         }
 
-        public async Task<IPaginatedResult<CollectionReturnDto>> GetClosedCollectionEvents(DateTime? closedCollectionsSince = null, int pageSize = 0, int pageNumber = 0)
+        public async Task<IPaginatedResult<CollectionReturnDto>> GetClosedCollectionEvents(CancellationToken cancellationToken, DateTime? closedCollectionsSince = null, int pageSize = 0, int pageNumber = 0)
         {
             IPaginatedResult<CollectionReturnDto> result;
 
@@ -76,7 +76,7 @@ namespace ESFA.DC.PublicApi.FCS.Services
                         TotalItems = grp.Count()
                     });
 
-                result = await PaginatedResultFactory<CollectionReturnDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, CancellationToken.None);
+                result = await PaginatedResultFactory<CollectionReturnDto>.CreatePaginatedResultAsync(data, pageSize, pageNumber, cancellationToken);
             }
 
             return result;

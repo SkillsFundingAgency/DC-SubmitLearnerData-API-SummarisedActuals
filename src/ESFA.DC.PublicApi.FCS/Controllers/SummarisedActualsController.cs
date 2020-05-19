@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using ESFA.DC.Api.Common.Extensions;
 using ESFA.DC.Api.Common.Paging.Interfaces;
@@ -38,6 +39,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
         /// <summary>
         /// Get summarised actuals based on the filter critiera
         /// </summary>
+        /// <param name="cancellationToken"></param>
         /// <param name="collectionReturnCode"></param>
         /// <param name="collectionType"></param>
         /// <param name="pageSize"></param>
@@ -52,7 +54,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [Route("{collectionReturnCode}/{collectionType}")]
-        public async Task<ActionResult<IEnumerable<SummarisedActualDto>>> Get(string collectionReturnCode, string collectionType, [FromQuery]int? pageSize = null, [FromQuery]int? pageNumber = null)
+        public async Task<ActionResult<IEnumerable<SummarisedActualDto>>> Get(CancellationToken cancellationToken, string collectionReturnCode, string collectionType,  [FromQuery]int? pageSize = null, [FromQuery]int? pageNumber = null)
         {
             if (string.IsNullOrWhiteSpace(collectionReturnCode) ||
                 string.IsNullOrWhiteSpace(collectionType))
@@ -60,7 +62,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
                 return BadRequest();
             }
 
-            IPaginatedResult<SummarisedActualDto> summarisedActuals = await _summarisedActualsRepository.GetSummarisedActuals(collectionType, collectionReturnCode, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
+            IPaginatedResult<SummarisedActualDto> summarisedActuals = await _summarisedActualsRepository.GetSummarisedActuals(cancellationToken, collectionType, collectionReturnCode, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
 
             _logger.LogVerbose($"Exiting Get Summarised Actuals, data count : {summarisedActuals.TotalItems}");
 
@@ -79,6 +81,7 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
         /// <param name="closedCollectionsSince"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageNumber"></param>
+        /// /// <param name="cancellationToken"></param>
         /// <returns>List of CollectionReturnDto with response header named "X-pagination" for paging information containing following
         ///  int TotalItems
         ///  int PageNumber
@@ -89,11 +92,11 @@ namespace ESFA.DC.PublicApi.FCS.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [HttpGet("collections")]
-        public async Task<ActionResult<IEnumerable<CollectionReturnDto>>> Get([FromQuery]DateTime? closedCollectionsSince = null, [FromQuery]int? pageSize = null, [FromQuery]int? pageNumber = null)
+        public async Task<ActionResult<IEnumerable<CollectionReturnDto>>> Get(CancellationToken cancellationToken, [FromQuery]DateTime? closedCollectionsSince = null, [FromQuery]int? pageSize = null, [FromQuery]int? pageNumber = null)
         {
             _logger.LogVerbose("Call made to Get Collection Returns");
 
-            var collectionEvents = await _summarisedActualsRepository.GetClosedCollectionEvents(closedCollectionsSince, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
+            var collectionEvents = await _summarisedActualsRepository.GetClosedCollectionEvents(cancellationToken, closedCollectionsSince, pageSize ?? DefaultConstants.DefaultPageSize, pageNumber ?? DefaultConstants.DefaultPageNumber);
 
             _logger.LogVerbose($"Exiting Get Collection Returns, data count : {collectionEvents.TotalItems}");
 
